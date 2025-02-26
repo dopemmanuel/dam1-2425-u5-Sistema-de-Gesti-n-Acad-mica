@@ -21,7 +21,10 @@ Objetivo: Familiarizarse con la herencia y cómo las clases derivadas pueden ten
 adicionales, así como comportamientos específicos.
  */
 
-open class Persona(val nombre: String, val edad: Int, val id: String){
+open class Persona(val nombre: String,
+                   val edad: Int,
+                   val id: String
+){
 
     init{
         require(edad > 0) { IllegalArgumentException("ERR0R: el year debe ser mayor que 0.") }
@@ -33,17 +36,33 @@ open class Persona(val nombre: String, val edad: Int, val id: String){
     }
 }
 
-class Estudiante(nombre: String, edad: Int, id: String, val curso: String, val calificacionPromedio: Double): Persona(nombre, edad, id){
-
+class Estudiante(nombre: String,
+                 edad: Int, id: String,
+                 val curso: String,
+                 val calificacionPromedio: Double
+): Persona(nombre, edad, id){
 
     fun mostrarCalificacion(): String {
-        return ""
+        return "$nombre esta en el curso $curso y su calificacion es $calificacionPromedio."
     }
 
     override fun mostrarRoll(): String {
         return "Su nombre es $nombre, tiene $edad años, se identifica con el ID: $id y es estudiante."
     }
 }
+
+class Profesor(nombre: String,
+               edad: Int,
+               id: String,
+               val departamento: String,
+               val aniosExperiencia: Int
+): Persona(nombre, edad, id){
+
+    override fun mostrarRoll(): String {
+        return "$nombre es profesor, "
+    }
+}
+
 
 fun main(){
 
